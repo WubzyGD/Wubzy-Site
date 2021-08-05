@@ -119,6 +119,12 @@
                 : document.getElementById('visualizer').style.opacity = window.scrollY >= document.getElementById('projects2').getBoundingClientRect().bottom ? '.1' : '1';
             };
             document.getElementsByTagName('html').item(0).style = "background-image: linear-gradient(to bottom, #00000000 0%, #171717ff 35%), url('https://cdn.discordapp.com/attachments/771177570754363393/869034932062810192/background.jpg'); min-height: 100vh;";
+        },
+        head: {
+            title: "Wubzy | Home",
+            meta: [
+                {hid: 'description', name: 'description', content: "Wubzy's Home Page! A place where you can find links to all my projects and see what I do ^^"}
+            ]
         }
     };
 </script>
