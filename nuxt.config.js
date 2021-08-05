@@ -11,8 +11,8 @@ export default {
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-      { name: 'theme-color', content: "" },
-      { name: "og:image", content: "" }
+      { name: 'theme-color', content: "#a172a6" },
+      { name: "og:image", content: "https://cdn.discordapp.com/avatars/330547934951112705/a_a9d63b8c1f37d9096527ee24fbe9b587.gif?size=512" }
     ],
     link: [
       { rel: 'icon', type: 'image/x-icon', href: 'https://cdn.discordapp.com/avatars/330547934951112705/a_a9d63b8c1f37d9096527ee24fbe9b587.gif?size=128' },
