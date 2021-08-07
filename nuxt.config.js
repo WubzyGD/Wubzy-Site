@@ -1,6 +1,6 @@
 export default {
   // Target: https://go.nuxtjs.dev/config-target
-  target: 'static',
+  target: 'server',
 
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
@@ -44,9 +44,16 @@ export default {
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
+    publicPath: '/assets/'
   },
 
   loading: '~/components/preloader.vue',
 
-  router: {base: '/Wubzy-Site/'}
+  router: {},
+
+  babel:{
+    plugins: [
+      ['@babel/plugin-proposal-private-methods', { loose: true }]
+    ]
+  }
 }
