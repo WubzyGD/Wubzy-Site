@@ -10,10 +10,10 @@
     "deploy": "push-dir --dir=dist --branch=gh-pages --cleanup"
   },
   "dependencies": {
+    "babel-runtime": "^6.26.0",
     "core-js": "^3.9.1",
     "nuxt": "^2.15.3",
-    "push-dir": "^0.4.1",
-    "babel-runtime": "^6.26.0"
+    "push-dir": "^0.4.1"
   },
   "devDependencies": {
     "@nuxt/types": "~2.15.0"
