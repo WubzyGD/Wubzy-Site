@@ -1,10 +1,13 @@
 <template>
-    <div class="container" :style="master">
-        <ThemeIntro></ThemeIntro>
+    <div class="container">
+        <ThemeIntro v-show="!editing" v-on:start-editing="startEditing"></ThemeIntro>
+        <ThemeEditor v-if="editing" id="editor"></ThemeEditor>
     </div>
 </template>
 
 <script>
+    import editor from '~/components/theme/editor';
+
     export default {
         head: {
             title: 'Wubzy | Theme Generator',
@@ -14,23 +17,33 @@
             meta: [
                 {charset: 'utf-8'},
                 {name: 'viewport', content: 'width=device-width, initial-scale=1'},
-                {hid: 'description', name: 'description', content: 'A theme generator for Better Discord based off of NotANotherAnimeTheme!'} 
+                {hid: 'description', name: 'description', content: 'A theme generator for Better Discord based off of NotANotherAnimeTheme!'}
             ],
             link: [
                 {rel: 'icon', type: 'image/x-icon', href: 'https://cdn.discordapp.com/avatars/330547934951112705/a_a9d63b8c1f37d9096527ee24fbe9b587.gif?size=128'},
                 {rel: 'stylesheet', href: "https://fonts.googleapis.com/css2?family=Montserrat:wght@200&display=swap"},
                 {rel: 'stylesheet', href: "https://fonts.googleapis.com/css2?family=Nunito:wght@200&display=swap"}
-            ]
+            ],
+            bodyAttrs: {
+                class: "mainbg"
+            }
         },
         data() {
-            return {master: {
-                background: "linear-gradient(to bottom, #00000000 0%, #00000000 5%, #171717cc 35%, #171717ea 55%, #171717ff 85%), url('~~assets/images/background.jpg')",
-                minHeight: "100vh"
-            }}
+            return {
+                editing: false
+            }
+        },
+        methods: {
+            startEditing() {
+                this.editing = true;
+            }
+        },
+        components: {
+            'ThemeEditor': editor
         }
     };
 </script>
 
 <style scoped>
-    
+
 </style>

@@ -1,4 +1,4 @@
-let template = `/**
+const template = `/**
 * @name {{themeName}}
 * @author puckzxz#2080
 * @version 3.2
@@ -28,9 +28,9 @@ let template = `/**
   --server-listing-width: 72px;
 
   --font-size: 100%;
-  --mention-color: {{main-color}}4b;
-  --mention-sider: {{main-color}}4b;
-  --mention-hover-color: {{trans-main-color}};
+  --mention-color: #{{mention-highlight-color}}4b;
+  --mention-sider: #{{mention-highlight-color}}7f;
+  --mention-hover-color: #{{mention-highlight-color}}5f;
 
   --category-hover-color: {{trans-main-color}};
 
@@ -43,12 +43,12 @@ let template = `/**
 
   --member-listing-role-color: var(--main-theme-color);
 
-  --small-user-popout-background-image: var(--theme-background-image);
-  --small-user-popout-background-transparency: rgba(0, 0, 0, 0.6);
+  --small-user-popout-background-image: {{small-popout-bg}};
+  --small-user-popout-background-transparency: {{small-popout-mask}};
   --small-user-popout-background-image-position: center;
 
-  --big-user-popout-background-image: var(--theme-background-image);
-  --big-user-popout-background-transparency: rgba(0, 0, 0, 0.6);
+  --big-user-popout-background-image: {{big-popout-bg}};
+  --big-user-popout-background-transparency: {{big-popout-mask}};
   --big-user-popout-background-image-position: center;
 
   --code-markup-background-color: rgba(0, 0, 0, 0.6);
@@ -69,12 +69,12 @@ let template = `/**
   --channel-limit-background-left: rgba(200, 200, 200, 0.1);
   --channel-limit-background-right: rgba(200, 200, 200, 0.2);
 
-  --scrollbar-color: {{main-color}}39;
+  --scrollbar-color: #{{scrollbar-color}}89;
 
   --unread-message-divider-color: #f04747;
   --unread-message-divider-font-color: #fff;
 
-  --new-messages-bar-background-color: #7289da;
+  --new-messages-bar-background-color: var(--main-theme-color);
   --new-messages-bar-font-color: #fff;
 
   --emoji-menu-background-color: rgba(0, 0, 0, 0.6);
@@ -90,8 +90,8 @@ let template = `/**
   --text-voice-channel-color: rgb(142, 146, 151);
   --text-voice-channel-hover-color: #dcddde;
   --text-voice-channel-selected-text-color: #fff;
-  --unread-text-channel-color: var(--main-theme-color);
-  --unread-text-channel-bubble-color: var(--main-theme-color);
+  --unread-text-channel-color: #{{unread-channel-color}};
+  --unread-text-channel-bubble-color: #{{unread-channel-color}};
 
   --folder-background-color: #2f3136;
   --expanded-folder-background-color: transparent;
@@ -100,7 +100,10 @@ let template = `/**
   --reaction-emoji-border-color: 1px solid transparent;
   --reaction-emoji-hover-background-color: rgba(255, 255, 255, 0.1);
   --reaction-emoji-hover-border-color: rgba(255, 255, 255, 0.2);
-}`;
+}
+
+.root-3QyAh1 {background-size: cover;}
+.userPopout-xaxa6l {background-size: cover;}`;
 
 let theme = {};
 
@@ -115,6 +118,26 @@ async function finish() {
     theme.maskStrength = document.getElementById("input-bg-mask-strength").value.trim();
     theme.primaryColor = document.getElementById("input-color-primary").value.trim();
     theme.friendsIcon = document.getElementById("input-friends-icon").value.trim();
+
+    theme.small = {};
+    theme.small.bg = document.getElementById('input-small-popout-bg').value.trim().length ? `url(${document.getElementById('input-small-popout-bg').value.trim()})` : `url(${theme.bg})`;
+    theme.small.mask = document.getElementById('input-small-popout-mask-color').value.trim();
+    theme.small.str = document.getElementById('input-small-popout-mask-strength').value.trim();
+    theme.small.grad = document.getElementById("input-small-popout-gradient-enabled").checked;
+    theme.small.gradp = document.getElementById('input-small-popout-gradient-percentage').value.trim().replace("%", '');
+    theme.small.gradc = document.getElementById('input-small-popout-gradient-color').value.trim().replace("#", '').replace(" ", '');
+
+    theme.big = {};
+    theme.big.bg = document.getElementById('input-big-popout-bg').value.trim().length ? `url(${document.getElementById('input-big-popout-bg').value.trim()})` : `url(${theme.bg})`;
+    theme.big.mask = document.getElementById('input-big-popout-mask-color').value.trim();
+    theme.big.str = document.getElementById('input-big-popout-mask-strength').value.trim();
+    theme.big.grad = document.getElementById("input-big-popout-gradient-enabled").checked;
+    theme.big.gradp = document.getElementById('input-big-popout-gradient-percentage').value.trim().replace("%", '');
+    theme.big.gradc = document.getElementById('input-big-popout-gradient-color').value.trim().replace("#", '').replace(" ", '');
+
+    theme.mention = document.getElementById('input-mention-highlight-color').value.trim().replace("#", "").replace(" ", "").length ? document.getElementById('input-mention-highlight-color').value.trim().replace("#", "").replace(" ", "") : theme.primaryColor.replace(/#/gm, '');
+    theme.scrollbar = document.getElementById('input-scrollbar-color').value.trim().replace("#", "").replace(" ", "").length ? document.getElementById('input-scrollbar-color').value.trim().replace("#", "").replace(" ", "") : theme.primaryColor.replace(/#/gm, '');
+    theme.unread = document.getElementById('input-unread-channel-color').value.trim().replace("#", "").replace(" ", "").length ? document.getElementById('input-unread-channel-color').value.trim().replace("#", "").replace(" ", "") : theme.primaryColor.replace(/#/gm, '');
 
     showGetName();
 }
@@ -153,7 +176,14 @@ function download() {
         .replace(/{{main-transparency}}/gm, `rgba(${mask[0]}, ${mask[1]}, ${mask[2]}, 0.${theme.maskStrength})`)
         .replace(/{{background-image}}/gm, theme.bg)
         .replace(/{{friends-icon}}/gm, theme.friendsIcon && theme.friendsIcon.length ? theme.friendsIcon : 'https://i.imgur.com/63g6Em8.jpg')
-        .replace(/{{trans-main-color}}/gm, `#${theme.primaryColor.replace(/#/gm, '')}5f`);
+        .replace(/{{trans-main-color}}/gm, `#${theme.primaryColor.replace(/#/gm, '')}5f`)
+        .replace(/{{small-popout-bg}}/gm, `${theme.small.grad ? `linear-gradient(to bottom, #00000000 0%, #${theme.small.gradc}${theme.small.gradc.length < 7 ? 'ff' : ''} ${theme.small.gradp}%), ` : ''}${theme.small.bg}`)
+        .replace(/{{big-popout-bg}}/gm, `${theme.big.grad ? `linear-gradient(to bottom, #00000000 0%, #${theme.big.gradc}${theme.big.gradc.length < 7 ? 'ff' : ''} ${theme.big.gradp}%), ` : ''}${theme.big.bg}`)
+        .replace(/{{small-popout-mask}}/gm,`rgba(${theme.small.mask.split(/\s+/gm).join(",")}, 0.${theme.small.str})`)
+        .replace(/{{big-popout-mask}}/gm,`rgba(${theme.big.mask.split(/\s+/gm).join(",")}, 0.${theme.big.str})`)
+        .replace(/{{mention-highlight-color}}/gm, theme.mention)
+        .replace(/{{scrollbar-color}}/gm, theme.scrollbar)
+        .replace(/{{unread-channel-color}}/gm, theme.unread);
 
     let blob = new Blob([themeFile], {type: 'text/css'});
     if (window.navigator.msSaveOrOpenBlob) {
@@ -176,10 +206,29 @@ function afterFinish() {
 
 function reset() {
     document.getElementById("input-bg-image").value = '';
-    document.getElementById("input-bg-mask").value = '';
-    document.getElementById("input-bg-mask-strength").value = '';
+    document.getElementById("input-bg-mask").value = '0 0 0';
+    document.getElementById("input-bg-mask-strength").value = '7';
     document.getElementById("input-color-primary").value = '';
     document.getElementById("input-friends-icon").value = '';
+
+    document.getElementById('input-small-popout-bg').value = '';
+    document.getElementById('input-small-popout-mask-color').value = '0 0 0';
+    document.getElementById('input-small-popout-mask-strength').value = '7';
+    document.getElementById("input-small-popout-gradient-enabled").checked = false;
+    document.getElementById('input-small-popout-gradient-percentage').value = '100%';
+    document.getElementById('input-small-popout-gradient-color').value = '#171717';
+
+    document.getElementById('input-big-popout-bg').value = '';
+    document.getElementById('input-big-popout-mask-color').value = '0 0 0';
+    document.getElementById('input-big-popout-mask-strength').value = '7';
+    document.getElementById("input-big-popout-gradient-enabled").checked = false;
+    document.getElementById('input-big-popout-gradient-percentage').value = '100%';
+    document.getElementById('input-big-popout-gradient-color').value = '#171717';
+
+    document.getElementById('input-mention-highlight-color').value = '';
+    document.getElementById('input-scrollbar-color').value = '';
+    document.getElementById('input-unread-channel-color').value = '';
+
     document.getElementById("input-name").value = '';
 
     theme = {};
@@ -189,5 +238,44 @@ function reset() {
 
 window.addEventListener("keydown", event => {
     if (event.isComposing || event.keyCode === 229) {return;}
-    if (event.keyCode === 13 && document.getElementById("get-name-window").style.display === "block") {return getName();}
+    if (event.keyCode === 13) {
+        if (document.getElementById("get-name-window").style.display === "block") {return getName();}
+        if (document.getElementById("finished-window").style.display === "block") {return document.getElementById("finished-window").style.display = 'none';}
+        if (document.getElementById("small-popout-preview").style.display === "block") {return document.getElementById("small-popout-preview").style.display = 'none';}
+        if (document.getElementById("big-popout-preview").style.display === "block") {return document.getElementById("big-popout-preview").style.display = 'none';}
+    }
 });
+
+function showSmallPopoutPreview() {
+    let popout = document.getElementById('small-popout-preview');
+    let bg = document.getElementById('input-small-popout-bg').value;
+    let mask = document.getElementById('input-small-popout-mask-color').value;
+    let str = document.getElementById('input-small-popout-mask-strength').value;
+    let gradp = document.getElementById('input-small-popout-gradient-percentage').value.replace("%", '');
+    let gradc = document.getElementById('input-small-popout-gradient-color').value.replace("#", '').replace(" ", '');
+
+    popout.style.background = `${document.getElementById("input-small-popout-gradient-enabled").checked ? `linear-gradient(to bottom, #00000000 0%, #${gradc}${gradc.length < 7 ? 'ff' : ''} ${gradp}%), ` : ''}url(${bg})`;
+    popout.style.backgroundSize = 'cover';
+
+    document.getElementById('small-popout-preview-mask').style.background = `rgba(${mask.split(/\s+/gm).join(",")}, 0.${str})`;
+
+    popout.style.display = 'block';
+    popout.focus();
+}
+
+function showBigPopoutPreview() {
+    let popout = document.getElementById('big-popout-preview');
+    let bg = document.getElementById('input-big-popout-bg').value;
+    let mask = document.getElementById('input-big-popout-mask-color').value;
+    let str = document.getElementById('input-big-popout-mask-strength').value;
+    let gradp = document.getElementById('input-big-popout-gradient-percentage').value.replace("%", '');
+    let gradc = document.getElementById('input-big-popout-gradient-color').value.replace("#", '').replace(" ", '');
+
+    popout.style.background = `${document.getElementById("input-big-popout-gradient-enabled").checked ? `linear-gradient(to bottom, #00000000 0%, #${gradc}${gradc.length < 7 ? 'ff' : ''} ${gradp}%), ` : ''}url(${bg})`;
+    popout.style.backgroundSize = 'cover';
+
+    document.getElementById('big-popout-preview-mask').style.background = `rgba(${mask.split(/\s+/gm).join(",")}, 0.${str})`;
+
+    popout.style.display = 'block';
+    popout.focus();
+}

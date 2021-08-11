@@ -1,0 +1,88 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@200&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@200&display=swap');
+
+
+.title-rgb {
+    font-family: 'Montserrat', sans-serif;
+    width: 5em;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    font-size: 3.5em;
+    overflow: auto;
+    animation:  dropdown-title 1.5s ease-in-out, shine 2.5s linear infinite;
+    background: linear-gradient(to right, #a172a6 20%, #171717 35%, #171717 35%, #a172a6 50%);
+    background-size: 200% auto;
+    color: #a172a6;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    transition: background .5s ease-in-out, animation .5s ease-in-out;
+}
+
+.title-rgb:hover {
+    background: linear-gradient(to right, #a172a6 20%, #fff 35%, #fff 35%, #a172a6 50%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation:  dropdown-title 1.5s ease-in-out, shine 2.5s linear infinite;
+    background-size: 200% auto;
+}
+
+@keyframes shine {
+    to {
+        background-position: 200% center;
+    }
+}
+
+@keyframes dropdown-title {
+    from {transform: translateY(-100vh);}
+    to {transform: translateY(0);}
+}
+
+
+.top, .main {
+    max-width: 100%;
+    width: auto;
+    padding: 20px 30px;
+}
+
+.top p, .main p, .main h2 {
+    color: #f3b5d3;
+    text-align: center;
+    width: auto;
+    margin-left: auto;
+    margin-right: auto;
+    font-family: "Nunito", sans-serif;
+    transition: background-color .75s ease-in-out;
+}
+
+.top {font-size: 1.35em;}
+
+.top a, .main a {
+    text-decoration: none;
+    color: white;
+}
+
+.top button {
+    background-color: #1e27423f;
+    color: #d0faeb;
+    text-align: center;
+    border: #f3b5d3 solid 1px;
+    border-radius: 3px;
+    width: auto;
+    margin-left: auto;
+    margin-right: auto;
+    font-size: 1.05em;
+    padding: 12px 15px;
+    font-family: "Monsterrat", sans-serif;
+    transition: background-color .65s ease-in-out, border-color .65s ease-in-out, color .65s ease-in-out;
+    margin-top: 2%;
+    cursor: pointer;
+}
+
+.top button:hover, .main button:hover {
+    background-color: #171717d8;
+    border-color: #a172a6;
+    color: #f3b5d3;
+}

@@ -15,6 +15,8 @@
                 looking for new challenges and projects to take on.
                 <br><br>
                 Feel free to check out some of my projects <a href="#projects" target="_self">here.</a>
+                <br>
+                Here's a link to my <NuxtLink to="/util/theme">my theme generator</NuxtLink> for BetterDiscord
             </p>
         </div>
 
