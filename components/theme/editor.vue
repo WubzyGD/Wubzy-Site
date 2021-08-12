@@ -30,7 +30,7 @@ import getname from "~/components/theme/save/getname";
 import legaljargon from "~/components/theme/save/legaljargon";
 import aftercomplete from "~/components/theme/save/aftercomplete";
 
-import reset from "assets/scripts/theme/reset";
+import reset from "~/assets/scripts/theme/reset";
 import finish from "~/assets/scripts/theme/finish";
 import download from "~/assets/scripts/theme/download";
 
@@ -68,7 +68,8 @@ export default {
             theme: {},
             gettingName: false,
             showingConf: false,
-            themeCompleted: false
+            themeCompleted: false,
+            version: 'Beta - 1.1.3'
         }
     }
 }

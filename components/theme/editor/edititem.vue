@@ -4,7 +4,7 @@
         <div v-html="desc" v-bind:class="'edit-item-desc'" style="text-align:left;"></div>
         <input v-bind:id="'input-' + baseId" v-bind:placeholder="example" v-model="dvalue" v-if="!special || (special && example)">
         <div v-if="special && popout">
-            <div v-for="x in specialItems" v-bind:class="'edit-item-sub'">
+            <div v-for="x in specialItems" v-bind:class="'edit-item-sub'" v-bind:key="x.baseId">
                 <p style="text-align:left;">{{ x.name }}</p>
                 <input v-bind:id="'input-' + baseId + '-' + x.base" v-bind:placeholder="x.ex" v-model="x.val">
             </div>

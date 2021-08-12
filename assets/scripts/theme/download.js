@@ -12,11 +12,27 @@ const template = `/**
 
 @import url(https://puckzxz.github.io/NotAnotherAnimeTheme/build/v3/naat.v3.css);{{horizontal-servers}}
 
+/* 
+ * =========================================
+ * Created using Wubzy.xyz's theme generator
+ * Questions about the theme or generator? Bugs or suggestions?
+ * Join NotAnotherAnimeTheme's support server at https://discord.gg/FdZhbjY
+ * Feedback is always welcome!
+ * 
+ * Hope you like your theme! ^^
+ * =========================================
+ */
+
+/*Generated at {{time}} -> Generator version {{version}}*/
+
 :root {
-  --theme-background-image: url({{background-image}});
-  --main-theme-color: {{main-color}};
-  --theme-transparency: {{main-transparency}};
-  --home-icon-image: url({{friends-icon}});
+
+  /*[MAIN THEME SETTINGS]*/
+  /*Some important settings that will change the majority of your client.*/
+  --theme-background-image: url({{background-image}}); /*The main image over your whole Discord client*/
+  --main-theme-color: {{main-color}}; /*The default theme color*/
+  --theme-transparency: {{main-transparency}}; /*The mask that applies over the background*/
+  --home-icon-image: url({{friends-icon}}); /*Your friends icon*/
   --home-icon-image-position: center center;
   --home-icon-image-zoom: 100%;
 
@@ -26,18 +42,25 @@ const template = `/**
     Double Column:  126px
     Triple Column:  184px
     Quad Column:    242px
+    Pentad Column:  304px
   */
+  /*[SERVER LISTING]*/
+  /*The number of columns in your server listing.*/
   --server-listing-width: {{server-columns}}px;
 
+  /*[FONT SIZE]*/
   --font-size: 100%;
-  --mention-color: #{{mention-highlight-color}}4b;
-  --mention-sider: #{{mention-highlight-color}}7f;
-  --mention-hover-color: #{{mention-highlight-color}}5f;
 
-  --category-hover-color: {{trans-main-color}};
+  /*[MENTION COLORS]*/
+  --mention-color: #{{mention-highlight-color}}4b; /*The color messages that mention you will highlight in*/
+  --mention-sider: #{{mention-highlight-color}}7f; /*The small bar on the left of a message that mentions you*/
+  --mention-hover-color: #{{mention-highlight-color}}5f; /*The color a mention highlight changes to when you hover over it*/
 
-  --unread-server-animation: rainbow;
+  --category-hover-color: {{trans-main-color}}; /*Color that categories change to when hovered over*/
 
+  --unread-server-animation: rainbow; /*The color animation that appears over server icons with unreads. Best to leave this be.*/
+
+  /*[VIDEO PLAYER]*/
   --video-screen-button-background-color: rgba(200, 200, 200, 0.2);
   --video-screen-button-foreground-color: white;
   --video-screen-button-background-hovor-color: rgba(200, 200, 200, 0.4);
@@ -45,6 +68,9 @@ const template = `/**
 
   --member-listing-role-color: var(--main-theme-color);
 
+  /*[USER POPOUTS]*/
+  /*The settings for the popouts when you click on a user in the members list (small popout) and when you click the "profile" button on a user (big popout)*/
+  /*Similar to main theme settings.*/
   --small-user-popout-background-image: {{small-popout-bg}};
   --small-user-popout-background-transparency: {{small-popout-mask}};
   --small-user-popout-background-image-position: center;
@@ -53,14 +79,18 @@ const template = `/**
   --big-user-popout-background-transparency: {{big-popout-mask}};
   --big-user-popout-background-image-position: center;
 
-  --code-markup-background-color: rgba(0, 0, 0, 0.6);
-  --code-markup-border: 1px solid transparent;
+  /*[CODE BLOCKS]*/
+  --code-markup-background-color: rgba(0, 0, 0, 0.6); /*Code blocks background color*/
+  --code-markup-border: 1px solid transparent; /*An optional border around code blocks (defaults to transparent - or invisible)*/
 
-  --message-box-transparency: rgba(0, 0, 0, 0.6);
+  --message-box-transparency: rgba(0, 0, 0, 0.6); /*The message box at the bottom. Change the first three values to edit its color, and the last to edit its transparency*/
 
   --embed-background-transparency: rgba(0, 0, 0, 0.6);
 
-  --message-hover-buttons-background: rgba(200, 200, 200, 0.1);
+  --message-hover-buttons-background: rgba(200, 200, 200, 0.1); /*The small box that appears around the edit, pin, delete, etc icons when you hover over a message*/
+
+  /*[ADVANCED SETTINGS]*/
+  /*This stuff is more on the advanced/nitty-gritty side. Most of the names are pretty self-explanatory.*/
 
   --context-menu-transparency: rgba(15, 15, 15, 0.8);
 
@@ -76,7 +106,7 @@ const template = `/**
   --unread-message-divider-color: #f04747;
   --unread-message-divider-font-color: #fff;
 
-  --new-messages-bar-background-color: var(--main-theme-color);
+  --new-messages-bar-background-color: var(--main-theme-color); /*The bar atop the screen saying "x new messages" when you're in a channel with unreads*/
   --new-messages-bar-font-color: #fff;
 
   --emoji-menu-background-color: rgba(0, 0, 0, 0.6);
@@ -104,8 +134,12 @@ const template = `/**
   --reaction-emoji-hover-border-color: rgba(255, 255, 255, 0.2);{{horizontal-servers-2}}
 }
 
-.root-3QyAh1 {background-size: cover;}
-.userPopout-xaxa6l {background-size: cover;}`;
+/*Changes the way popout background images apply to account for any size mismatching.*/
+.root-3QyAh1 {background-size: cover;} /*Large popout*/
+.userPopout-xaxa6l {background-size: cover;} /*Small popout*/
+
+/*Make the Channel Tabs plugin background invisible so it's flush with your theme's background*/
+.channelTabs-tabContainer, .channelTabs-container {background: 0 0!important; background-color: initial !important;}`;
 
 export default function download() {
     let name = this.theme.name;
@@ -126,7 +160,9 @@ export default function download() {
         .replace(/{{unread-channel-color}}/gm, this.theme.unread)
         .replace(/{{server-columns}}/gm, `${columns[this.theme.columns - 1]}`)
         .replace(/{{horizontal-servers}}/gm, this.theme.horizontal ? '\n@import url(https://g2ningyo.github.io/HorizontalNAAT/build/HNAAT.css);' : '')
-        .replace(/{{horizontal-servers-2}}/gm, this.theme.horizontal ? "\n\n\n  /*==Server Listing Size, Spacing and Container==*/\n  /*SERVER LIST*/ --server-size: var(--Top-server-icon-size, var(--Top-size, 46px)) !important; /*Change only the pixels if wanted*/\n  /*SERVER LIST*/ --server-spacing: var(--Top-server-spacing, var(--Top-spacing, 10px))  !important; /*Change only the pixels if wanted*/\n  /*SERVER LIST*/ --server-container: calc(var(--server-size) + 20px)  !important; /*Please dont change this if you dont understand CSS*/" : '');
+        .replace(/{{horizontal-servers-2}}/gm, this.theme.horizontal ? "\n\n\n  /*[HORIZONTAL SERVER LISTING]*/\n  /*Here's some CSS from Ningyo's horizontal server listing to change its settings.*/\n\n  /*==Server Listing Size, Spacing and Container==*/\n  /*SERVER LIST*/ --server-size: var(--Top-server-icon-size, var(--Top-size, 46px)) !important; /*Change only the pixels if wanted*/\n  /*SERVER LIST*/ --server-spacing: var(--Top-server-spacing, var(--Top-spacing, 10px))  !important; /*Change only the pixels if wanted*/\n  /*SERVER LIST*/ --server-container: calc(var(--server-size) + 20px)  !important; /*Please dont change this if you dont understand CSS*/" : '')
+        .replace(/{{time}}/gm, new Date().toUTCString())
+        .replace(/{{version}}/gm, this.version);
 
     let blob = new Blob([themeFile], {type: 'text/css'});
     if (window.navigator.msSaveOrOpenBlob) {
