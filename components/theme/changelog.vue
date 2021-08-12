@@ -30,7 +30,9 @@ export default {
     data() {
         return {
             recent: [
-                "The site is now in Nuxt.js!"
+                "The site is now in Nuxt.js!",
+                "Added server listing columns",
+                "Added the option for horizontally-displayed servers"
             ],
             old: [
                 "Added small and big popout settings",

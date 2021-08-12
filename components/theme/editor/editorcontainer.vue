@@ -42,6 +42,10 @@ export default {
                     title: "Friends Icon Image", baseId: "friends-icon", example: "https://....png",
                     desc: "<p style='text-align:left;'>The image that will be displayed as the friends icon in the top left corner. You may leave this blank to use a default.<br><br><em>Please use an image URL here.</em><br><br><em>Do bear in mind that this icon is on the smaller side and is round</em></p>"
                 }, {
+                    title: "Server Listing Width", baseId: "server-listing", special: true, popout: false,
+                    desc: "<p style='text-align:left;'>How many columns your server listing will have. For example, 2 means you'll have two columns of server icons side-by-side.<br><br><em>This is a <b>number</b> between <b>1</b> and <b>5</b>.</em></p>",
+                    forced: "<div class='edit-item-sub'><p>Columns</p><input id='input-server-listing-columns' value='1' placeholder='1'></div><div class='gradient-sub'><p style='display:inline-block;'>Horizontal</p><input type='checkbox' id='input-server-listing-horizontal-enabled' style='display:inline-block; width:auto; height:auto;'></div>"
+                }, {
                     title: "Small User Popout", baseId: "small-popout", special: true,
                     desc: "<p style='text-align:left;'>The background image shown when you click on a user in the friends menu, among other settings.<br><br>It is perfectly okay to leave all of these settings unmodified.</p>"
                 }, {

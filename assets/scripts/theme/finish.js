@@ -25,5 +25,9 @@ export default function finish() {
     this.theme.scrollbar = document.getElementById('input-scrollbar-color').value.trim().replace("#", "").replace(" ", "").length ? document.getElementById('input-scrollbar-color').value.trim().replace("#", "").replace(" ", "") : this.theme.primaryColor.replace(/#/gm, '');
     this.theme.unread = document.getElementById('input-unread-channel-color').value.trim().replace("#", "").replace(" ", "").length ? document.getElementById('input-unread-channel-color').value.trim().replace("#", "").replace(" ", "") : this.theme.primaryColor.replace(/#/gm, '');
 
+    this.theme.columns = document.getElementById('input-server-listing-columns').value.trim().length && isNaN(Number(document.getElementById('input-server-listing-columns').value.trim())) ? 1 : Number(document.getElementById('input-server-listing-columns').value.trim());
+    this.theme.horizontal = document.getElementById('input-server-listing-horizontal-enabled').checked;
+    if (this.theme.horizontal) {this.theme.columns = 1;}
+
     this.gettingName = true;
 };

@@ -146,7 +146,7 @@
 
 #extra-options {display: none;}
 
-#input-small-popout-gradient-enabled, #input-big-popout-gradient-enabled {
+#input-small-popout-gradient-enabled, #input-big-popout-gradient-enabled, #input-server-listing-horizontal-enabled {
     display: inline-block;
     width: auto;
     height: auto;

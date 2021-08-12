@@ -22,6 +22,8 @@ export default function reset() {
     document.getElementById('input-mention-highlight-color').value = '';
     document.getElementById('input-scrollbar-color').value = '';
     document.getElementById('input-unread-channel-color').value = '';
+    document.getElementById('input-server-listing-columns').value = '';
+    document.getElementById('input-server-listing-horizontal-enabled').checked = false;
 
     document.getElementById("input-name").value = '';
 

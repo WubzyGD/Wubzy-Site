@@ -1,3 +1,5 @@
+const columns = [72, 126, 184, 242, 304];
+
 const template = `/**
 * @name {{themeName}}
 * @author puckzxz#2080
@@ -8,7 +10,7 @@ const template = `/**
 * @updateUrl https://raw.githubusercontent.com/puckzxz/NotAnotherAnimeTheme/master/NotAnotherAnimeTheme.theme.css
 */
 
-@import url(https://puckzxz.github.io/NotAnotherAnimeTheme/build/v3/naat.v3.css);
+@import url(https://puckzxz.github.io/NotAnotherAnimeTheme/build/v3/naat.v3.css);{{horizontal-servers}}
 
 :root {
   --theme-background-image: url({{background-image}});
@@ -25,7 +27,7 @@ const template = `/**
     Triple Column:  184px
     Quad Column:    242px
   */
-  --server-listing-width: 72px;
+  --server-listing-width: {{server-columns}}px;
 
   --font-size: 100%;
   --mention-color: #{{mention-highlight-color}}4b;
@@ -99,7 +101,7 @@ const template = `/**
   --reaction-emoji-background-color: rgba(0, 0, 0, 0);
   --reaction-emoji-border-color: 1px solid transparent;
   --reaction-emoji-hover-background-color: rgba(255, 255, 255, 0.1);
-  --reaction-emoji-hover-border-color: rgba(255, 255, 255, 0.2);
+  --reaction-emoji-hover-border-color: rgba(255, 255, 255, 0.2);{{horizontal-servers-2}}
 }
 
 .root-3QyAh1 {background-size: cover;}
@@ -121,7 +123,10 @@ export default function download() {
         .replace(/{{big-popout-mask}}/gm,`rgba(${this.theme.big.mask.split(/\s+/gm).join(",")}, 0.${this.theme.big.str})`)
         .replace(/{{mention-highlight-color}}/gm, this.theme.mention)
         .replace(/{{scrollbar-color}}/gm, this.theme.scrollbar)
-        .replace(/{{unread-channel-color}}/gm, this.theme.unread);
+        .replace(/{{unread-channel-color}}/gm, this.theme.unread)
+        .replace(/{{server-columns}}/gm, `${columns[this.theme.columns - 1]}`)
+        .replace(/{{horizontal-servers}}/gm, this.theme.horizontal ? '\n@import url(https://g2ningyo.github.io/HorizontalNAAT/build/HNAAT.css);' : '')
+        .replace(/{{horizontal-servers-2}}/gm, this.theme.horizontal ? "\n\n\n  /*==Server Listing Size, Spacing and Container==*/\n  /*SERVER LIST*/ --server-size: var(--Top-server-icon-size, var(--Top-size, 46px)) !important; /*Change only the pixels if wanted*/\n  /*SERVER LIST*/ --server-spacing: var(--Top-server-spacing, var(--Top-spacing, 10px))  !important; /*Change only the pixels if wanted*/\n  /*SERVER LIST*/ --server-container: calc(var(--server-size) + 20px)  !important; /*Please dont change this if you dont understand CSS*/" : '');
 
     let blob = new Blob([themeFile], {type: 'text/css'});
     if (window.navigator.msSaveOrOpenBlob) {
