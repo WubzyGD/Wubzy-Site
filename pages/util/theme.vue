@@ -20,7 +20,7 @@
                 {hid: 'description', name: 'description', content: 'A theme generator for Better Discord based off of NotANotherAnimeTheme!'}
             ],
             link: [
-                {rel: 'icon', type: 'image/x-icon', href: 'https://cdn.discordapp.com/avatars/330547934951112705/a_a9d63b8c1f37d9096527ee24fbe9b587.gif?size=128'},
+                {rel: 'icon', type: 'image/x-icon', href: 'https://cdn.discordapp.com/avatars/330547934951112705/a_3f507224356810d225b8e1ada0270bc4.gif?size=128'},
                 {rel: 'stylesheet', href: "https://fonts.googleapis.com/css2?family=Montserrat:wght@200&display=swap"},
                 {rel: 'stylesheet', href: "https://fonts.googleapis.com/css2?family=Nunito:wght@200&display=swap"}
             ],
