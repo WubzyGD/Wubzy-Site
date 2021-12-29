@@ -3,7 +3,7 @@
         <Visualizer></Visualizer>
 
         <h1 class="title-rgb">WubzyGD</h1>
-        <img src="https://cdn.discordapp.com/avatars/330547934951112705/a_3f507224356810d225b8e1ada0270bc4.gif?size=2048" alt="Wubzy's Profile Picture" class="center" style="border-radius: 50%; border-width: 2px; border-style: solid; border-color: #a172a6;">
+        <img src="https://cdn.discordapp.com/avatars/330547934951112705/a_58a4c434688730e21a133e5cb566f827.gif?size=2048" alt="Wubzy's Profile Picture" class="center" style="border-radius: 50%; border-width: 2px; border-style: solid; border-color: #a172a6;">
 
         <div class="info">
             <h2>Hi, I'm Wubzy!</h2>
