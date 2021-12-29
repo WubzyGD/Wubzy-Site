@@ -3,7 +3,7 @@
         <Visualizer></Visualizer>
 
         <h1 class="title-rgb">WubzyGD</h1>
-        <img src="https://cdn.discordapp.com/avatars/330547934951112705/a_58a4c434688730e21a133e5cb566f827.gif?size=2048" alt="Wubzy's Profile Picture" class="center" style="border-radius: 50%; border-width: 2px; border-style: solid; border-color: #a172a6;">
+        <img src="https://cdn.discordapp.com/attachments/771177570754363393/925541477436755998/20200828_231815.gif?size=2048" alt="Wubzy's Profile Picture" class="center" style="border-radius: 50%; border-width: 2px; border-style: solid; border-color: #a172a6;">
 
         <div class="info">
             <h2>Hi, I'm Wubzy!</h2>
@@ -321,19 +321,18 @@
         max-width: 70vw;
         width: 80vw;
         min-width: 40%;
-        margin-left: 9vw;
-        margin-right: 9vw;
+        margin-left: auto;
+        margin-right: auto;
         margin-top: 3.25vh;
         padding: 1.75% 2%;
         font-size: 1.35em;
         font-family: "Nunito", sans-serif;
-        display: inline-flex;
+
+        display: flex;
         justify-content: center;
-        justify-items: center;
-        justify-self: center;
         flex-flow: row wrap;
-        align-items: flex-start;
-        align-content: flex-start;
+        align-items: center;
+        align-content: stretch;
     }
 
     .projects h3 {color: #f3b5d3;}
